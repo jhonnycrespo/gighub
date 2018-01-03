@@ -29,6 +29,12 @@ namespace GigHubApp.Controllers
         [HttpPost]
         public ActionResult Create(GigFormViewModel viewModel)
         {
+            if (!ModelState.IsValid)
+            {
+                viewModel.Genres = _context.Genres.ToList();
+                return View("Create", viewModel);
+            }
+
             // no podemos hacer esto, EF no sabe como convertir User.Identity.GetUserId() a codigo sql
             // var artist = _context.Users.Single(u => u.Id == User.Identity.GetUserId());
 
@@ -36,7 +42,7 @@ namespace GigHubApp.Controllers
             {
                 ArtistId = User.Identity.GetUserId(),
                 //DateTime = DateTime.Parse(string.Format("{0} {1}", viewModel.Date, viewModel.Time)),
-                DateTime = viewModel.DateTime,
+                DateTime = viewModel.GetDateTime(),
                 GenreId = viewModel.Genre,
                 Venue = viewModel.Venue
             };
