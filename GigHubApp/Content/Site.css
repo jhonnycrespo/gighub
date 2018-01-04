@@ -110,19 +110,21 @@ h6,
 
 .form-control {
     font-size: 17px;
-    padding: 20px 15px;
+    /*padding: 20px 15px;*/
+    -ms-border-radius: 9px;
     border-radius: 9px;
 }
 
-.form-control:focus {
+/*.form-control:focus {
     border-color: #2196f3;
     box-shadow: none;
     -webkit-box-shadow: none;
-}
+}*/
 
 .btn {
     /*font-size: 17px;
     padding: 7px 20px;*/
+    -ms-border-radius: 9px;
     border-radius: 9px;
 }
 
