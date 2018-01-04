@@ -7,11 +7,11 @@
 <h2>Add a Gig</h2>
 @using (Html.BeginForm("Create", "Gigs"))
 {
-    <p class="alert-info">All fields are <strong>required</strong>.</p>
+    <p class="alert alert-info">All fields are <strong>required</strong>.</p>
     @Html.AntiForgeryToken()
     <div class="form-group">
         @Html.LabelFor(m => m.Venue)
-        @Html.TextBoxFor(m => m.Venue, new { @class = "form-control", autofocues = "autofocus" })
+        @Html.TextBoxFor(m => m.Venue, new { @class = "form-control", autofocus = "autofocus" })
         @Html.ValidationMessageFor(m => m.Venue)
     </div>
     <div class="form-group">
