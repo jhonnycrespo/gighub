@@ -128,13 +128,14 @@ h6,
 }
 .gigs > li {
   position: relative;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
 }
 .gigs > li .date {
   background: red;
   color: white;
   text-align: center;
   width: 60px;
+  -ms-border-radius: 8px;
   border-radius: 8px;
 }
 .gigs > li .date .month {
@@ -159,7 +160,9 @@ h6,
   display: block;
 }
 .gigs > li .details .genre {
-  font-size: 15px;
+  font-size: 14px;
+  display: block;
+  margin-bottom: 4px;
 }
 .gigs > li .actions {
   font-size: 15px;
