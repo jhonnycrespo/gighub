@@ -18,7 +18,7 @@
     </div>
 }
 
-<ul class="gigs voffset4">
+<ul class="gigs voffset4" id="gigs">
     @foreach (var gig in Model.UpcomingGigs)
     {
         <li>
@@ -61,41 +61,18 @@
 {
     <script>
         $(document).ready(function () {
-            $('.js-toggle-attendance').click(function (e) {
+            GigsController.init('#gigs');
+
+            $(".js-toggle-follow").click(function (e) {
                 var button = $(e.target);
-
-                if (button.hasClass('btn-default')) {
-                    $.post("/api/attendances", { gigId: button.attr("data-gig-id") })
-                        .done(function () {
-                            button.removeClass("btn-default").addClass("btn-info").text("Going");
-                        })
-                        .fail(function () {
-                            alert("something went wrong!");
-                        });
-                } else {
-                    $.ajax({
-                        url: '/api/attendances/' + button.attr('data-gig-id'),
-                        method: 'DELETE'
+                $.post("/api/followings", { followeeId: button.attr("data-user-id") })
+                    .done(function () {
+                        button.text("Following");
                     })
-                        .done(function () {
-                            button.removeClass('btn-info').addClass('btn-default').text('Going?');
-                        })
-                        .fail(function () {
-                            alert('Something failed');
-                        })
-                }
-            })
-        });
-
-        $(".js-toggle-follow").click(function (e) {
-            var button = $(e.target);
-            $.post("/api/followings", { followeeId: button.attr("data-user-id") })
-                .done(function () {
-                    button.text("Following");
-                })
-                .fail(function () {
-                    alert("Something failed");
-                });
+                    .fail(function () {
+                        alert("Something failed");
+                    });
+            });
         });
     </script>
 }
