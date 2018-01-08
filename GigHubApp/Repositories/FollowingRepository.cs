@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace GigHubApp.Repositories
 {
-    public class FollowingRepository
+    public class FollowingRepository : IFollowingRepository
     {
         private GigHubContext _context;
 

@@ -9,13 +9,15 @@ namespace GigHubApp.Controllers
 {
     public class GigsController : Controller
     {
-        private readonly GigHubContext _context;
-        private readonly UnitOfWork _unitOfWork;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public GigsController()
+        public GigsController(IUnitOfWork unitOfWork)
         {
-            _context = new GigHubContext();
-            _unitOfWork = new UnitOfWork(_context);
+            // It's still tightly coupled to EF
+            //_unitOfWork = new UnitOfWork(new GigHubContext());
+
+            // We use DI to break the tightly coupled
+            _unitOfWork = unitOfWork;
         }
 
         [Authorize]
@@ -114,7 +116,7 @@ namespace GigHubApp.Controllers
         {
             if (!ModelState.IsValid)
             {
-                viewModel.Genres = _context.Genres.ToList();
+                viewModel.Genres = _unitOfWork.Genres.GetGenres();
                 return View("GigForm", viewModel);
             }
 
@@ -143,7 +145,7 @@ namespace GigHubApp.Controllers
         {
             if (!ModelState.IsValid)
             {
-                viewModel.Genres = _context.Genres.ToList();
+                viewModel.Genres = _unitOfWork.Genres.GetGenres();
                 return View("GigForm", viewModel);
             }
 

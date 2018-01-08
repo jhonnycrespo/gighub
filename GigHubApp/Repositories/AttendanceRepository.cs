@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace GigHubApp.Repositories
 {
-    public class AttendanceRepository
+    public class AttendanceRepository : IAttendanceRepository
     {
         private readonly GigHubContext _context;
 
