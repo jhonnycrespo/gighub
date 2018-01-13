@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
 
 namespace GigHubApp.Core.Models
 {
@@ -10,8 +9,6 @@ namespace GigHubApp.Core.Models
         public NotificationType Type { get; private set; }
         public DateTime? OriginalDateTime { get; private set; }
         public string OriginalVenue { get; private set; }
-
-        [Required]
         public Gig Gig { get; private set; }
 
         // EF need this constructor
