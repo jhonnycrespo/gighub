@@ -12,7 +12,7 @@ namespace GigHubApp.Core.Models
         public Gig Gig { get; private set; }
 
         // EF need this constructor
-        public Notification()
+        protected Notification()
         {
 
         }

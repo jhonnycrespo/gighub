@@ -4,7 +4,7 @@ namespace GigHubApp.Migrations
 {
     using System.Data.Entity.Migrations;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<GigHubContext>
+    public sealed class Configuration : DbMigrationsConfiguration<GigHubContext>
     {
         public Configuration()
         {
